@@ -1,8 +1,8 @@
 <template>
   <div id="firstdiv">
     <header>
-      <div>
-
+      <div id="heade_div">
+        <div v-for="(val,index) in a" :key="val + index" :class="`con`+index">{{a[Math.round(Math.random()*10)]}}</div>
       </div> 
     </header>
     <br/>
@@ -15,22 +15,22 @@
       <div id="first-menu">
         <router-link :to="'/three'">
           <div class="first-small-place">
-            <h2>创意小角落</h2>
+            <h2>吃鸡小天地</h2>
           </div>
         </router-link>
         <router-link :to="'/second'">
           <div class="first-small-flower">
-            <h2>温馨小花园</h2>
+            <h2>我们的回忆</h2>
           </div>
         </router-link>
         <router-link :to="'/second'">
           <div class="first-small-sweet">
-            <h2>甜美小点心</h2>
+            <h2>留言板</h2>
           </div>
         </router-link>
         <router-link :to="'/second'">
           <div class="first-small-message">
-            <h2>信息统计表</h2>
+            <h2>信息收集箱</h2>
           </div>
         </router-link>
       </div>
@@ -44,36 +44,36 @@
     <div id="first-content">
       <div style="height:295px;">
         <div class="body-div">
-          <img src="/static/images/t1.jpg"/>
+          <img src="/static/images/cj1.jpg"/>
           <div class="first-pointers bgwh onept"></div>
         </div>
         <div class="body-div">
           <div class="bd-firstmsg">
-            <div class="first-title">你好呀</div>
-            <h3>第二标题</h3>
-            <div>描述</div>
+            <div class="first-title">锦哥开车</div>
+            <h3>准备撞草堆</h3>
+            <div>锦哥自认车神，瞬间打脸</div>
           </div>
           <div class="bd-secondmsg">
-            <div class="first-title first-title-left">你好呀</div>
-            <h3>第二标题</h3>
-            <div class="right-ms">描述</div>
+            <div class="first-title first-title-left">秒变渣渣</div>
+            <h3>帅不过两秒系列</h3>
+            <div class="right-ms">话都未讲完就撞左上去</div>
           </div>
           <div class="first-pointers onet"></div>
           <div class="first-pointers onew"></div>
         </div>
         <div class="body-div">
-          <img src="/static/images/t2.jpg"/>
+          <img src="/static/images/cj3.jpg"/>
           <div class="first-pointers bgwh lastpt"></div>
         </div>
         <div class="body-div">
-          <img src="/static/images/t3.jpg"/>
+          <img src="/static/images/cj6.jpg"/>
           <div class="first-pointers bgwh first-th-a hidden"></div>
         </div>
         <div class="body-div three-screen">
           <div class="one-msg one-msg-top three-screen-div">
-            <div class="first-title">你好呀</div>
-            <h3>第二标题</h3>
-            <div>描述</div>
+            <div class="first-title">表示辣鸡</div>
+            <h3>贵哥表示无奈</h3>
+            <div>贵哥话车技流就唔好开车啦</div>
           </div>
           <div hidden class="first-pointers first-th-b hidden"></div>
         </div>
@@ -83,34 +83,34 @@
 
         <div class="body-div second-onept">
           <div class="one-msg one-msg-bottom second-onemsg">
-            <div class="first-title first-title-left">你好呀</div>
-            <h3>第二标题</h3>
-            <div class="right-ms">描述</div>
+            <div class="first-title first-title-left">白云山</div>
+            <h3>白云山一日游</h3>
+            <div class="right-ms">再次声明，我没得讲过系我交去白云山的（偷笑）</div>
           </div>
           <div class="first-pointers hidden second-th-a"></div>
         </div>
 
         <div class="body-div second-twpt">
-          <img src="/static/images/t4.jpg"/>
+          <img src="/static/images/cj15.jpg"/>
           <div class="first-pointers bgwh hidden second-th-b"></div>
         </div>
 
         <div class="body-div second-as">
-          <img src="/static/images/t5.jpg"/>
+          <img src="/static/images/cj9.jpg"/>
           <div class="first-pointers bgwh onept"></div>
         </div>
 
         <div class="body-div second-lasmsg">
           <div class="bd-firstmsg">
-            <div class="first-title">你好呀</div>
-            <h3>第二标题</h3>
-            <div>描述</div>
+            <div class="first-title">傲娇锦哥</div>
+            <h3>想打佢</h3>
+            <div>锦哥傲娇的小眼神表示白云山小意思啦</div>
           </div>
           
           <div class="bd-secondmsg">
-            <div class="first-title first-title-left">你好呀</div>
-            <h3>第二标题</h3>
-            <div class="right-ms">描述</div>
+            <div class="first-title first-title-left">我们</div>
+            <h3>四个傻仔爬白云山</h3>
+            <div class="right-ms">虽然有点累，但系都系值得的</div>
           </div>
           <div class="first-pointers onet"></div>
           <div class="first-pointers onew"></div>
@@ -118,23 +118,31 @@
         </div>
 
         <div class="body-div second-laspt">
-          <img src="/static/images/t6.jpg"/>
+          <img src="/static/images/cj11.jpg"/>
           <div class="first-pointers bgwh lastpt"></div>
         </div>
 
       </div>
+      
     </div>
 
-    <footer></footer>  
+    <footer>
+
+    </footer>  
   </div>
 </template>
 
 <script>
-    export default {
-        name: "first",
-        created() {
-        }
+  export default {
+    name: "first",
+    data() {
+      return {
+        a: ['盒子精','无敌战神','躺鸡萌妹','带妹上分','带兄弟上分','落地成盒','医疗兵','最佳第五人','暴走鸡神','迷你鸡王','车王']
+      }
+    },
+    created() {
     }
+  }
 </script>
 
 <style>
@@ -151,10 +159,140 @@ body {
 }
 header {
   width: 100%;
-  height: 30em;
-  background-image: url(".././assets/jks.jpg");
+  height: 70%;
+  background-image: url(".././assets/cj2.jpg");
   background-repeat: no-repeat; 
   background-size: 100%;
+}
+#heade_div div {
+  color: rebeccapurple;
+  display: inline-block;
+  font-size: 20px;
+  position: absolute;
+  cursor: pointer;
+}
+@keyframes sparkling {
+  0% {
+    font-size: 12px;
+    opacity: 0;
+  }
+  50% {
+    font-size: 24px;
+    opacity: 1;
+  }
+  100% {
+    font-size: 12px;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes sparkling {
+  0% {
+    font-size: 12px;
+    opacity: 0;
+  }
+  50% {
+    font-size: 24px;
+    opacity: 1;
+  }
+  100% {
+    font-size: 12px;
+    opacity: 0;
+  }
+}
+@-moz-keyframes sparkling {
+  0% {
+    font-size: 12px;
+    opacity: 0;
+  }
+  50% {
+    font-size: 24px;
+    opacity: 1;
+  }
+  100% {
+    font-size: 12px;
+    opacity: 0;
+  }
+}
+@-o-keyframes sparkling {
+  0% {
+    font-size: 12px;
+    opacity: 0;
+  }
+  50% {
+    font-size: 24px;
+    opacity: 1;
+  }
+  100% {
+    font-size: 12px;
+    opacity: 0;
+  }
+}
+#heade_div .con1 {
+  animation: sparkling 4s infinite;
+  top: 5%;
+  left: 15%;
+  color: rgb(245, 48, 120);
+}
+#heade_div .con2 {
+  animation: sparkling 6s infinite;
+  top: 18%;
+  left: 5%;
+  color: rgb(160, 247, 242);
+}
+#heade_div .con3 {
+  animation: sparkling 5s infinite;
+  top: 36%;
+  left: 33%;
+  color: rgb(252, 193, 215);
+  font-family: serif;
+}
+#heade_div .con4 {
+  animation: sparkling 4s infinite;
+  top: 10%;
+  left: 25%;
+  color: rgb(219, 78, 238);
+}
+#heade_div .con5 {
+  animation: sparkling 6s infinite;
+  top: 40%;
+  left: 15%;
+  color: rgb(187, 144, 199);
+}
+#heade_div .con6 {
+  animation: sparkling 5s infinite;
+  top: 30%;
+  left: 25%;
+  color: rgb(236, 196, 134);
+}
+#heade_div .con7 {
+  animation: sparkling 4s infinite;
+  top: 5%;
+  left: 65%;
+  color: rgb(115, 191, 241);
+}
+#heade_div .con8 {
+  animation: sparkling 5s infinite;
+  top: 40%;
+  left: 75%;
+  color: rgb(214, 122, 241);
+}
+#heade_div .con9 {
+  animation: sparkling 6s infinite;
+  top: 10%;
+  left: 60%;
+  color: rgb(211, 250, 148);
+}
+#heade_div .con10 {
+  animation: sparkling 4s infinite;
+  top: 10%;
+  left: 85%;
+  color: rgb(44, 253, 149);
+}
+#heade_div .con0 {
+  animation: sparkling 5s infinite;
+  top: 20%;
+  left: 70%;
+  color: rgb(245, 167, 241);
 }
 #first-menu {
   width:100%;
@@ -428,6 +566,63 @@ footer{
   }
 }
 @media screen and (min-width: 1270px) and (max-width: 1459px) {
+  
+  @keyframes sparkling {
+    0% {
+      font-size: 12px;
+      opacity: 0;
+    }
+    50% {
+      font-size: 22px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 12px;
+      opacity: 0;
+    }
+  }
+  @-moz-keyframes sparkling {
+    0% {
+      font-size: 12px;
+      opacity: 0;
+    }
+    50% {
+      font-size: 22px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 12px;
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes sparkling {
+    0% {
+      font-size: 12px;
+      opacity: 0;
+    }
+    50% {
+      font-size: 22px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 12px;
+      opacity: 0;
+    }
+  }
+  @-o-keyframes sparkling {
+    0% {
+      font-size: 12px;
+      opacity: 0;
+    }
+    50% {
+      font-size: 22px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 12px;
+      opacity: 0;
+    }
+  }
   .first-small-sweet,.first-small-place,.first-small-flower,.first-small-message {
     width:280px;
     margin: 0 10px 0 10px;
@@ -531,6 +726,63 @@ footer{
   }
 }
 @media screen  and (max-width: 1269px) {
+  
+  @keyframes sparkling {
+    0% {
+      font-size: 12px;
+      opacity: 0;
+    }
+    50% {
+      font-size: 16px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 12px;
+      opacity: 0;
+    }
+  }
+  @-moz-keyframes sparkling {
+    0% {
+      font-size: 12px;
+      opacity: 0;
+    }
+    50% {
+      font-size: 16px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 12px;
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes sparkling {
+    0% {
+      font-size: 12px;
+      opacity: 0;
+    }
+    50% {
+      font-size: 16px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 12px;
+      opacity: 0;
+    }
+  }
+  @-o-keyframes sparkling {
+    0% {
+      font-size: 12px;
+      opacity: 0;
+    }
+    50% {
+      font-size: 16px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 12px;
+      opacity: 0;
+    }
+  }
   #first-container {
     height:130px;
     overflow: hidden;
