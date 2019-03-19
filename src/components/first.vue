@@ -160,7 +160,8 @@ body {
 header {
   width: 100%;
   height: 70%;
-  background-image: url(".././assets/cj2.jpg");
+  
+  background-image: url("/static/images/cj2.jpg");
   background-repeat: no-repeat; 
   background-size: 100%;
 }
