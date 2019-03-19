@@ -149,7 +149,7 @@ body {
 header {
   width: 100%;
   height: 30em;
-  background-image: url(".././assets/jks.jpg");
+  background-image: url("/static/images/cj2.jpg");
   background-repeat: no-repeat; 
   background-size: 100%;
 }
