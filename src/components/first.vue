@@ -189,7 +189,6 @@ body {
   overflow-x: hidden !important;
 }
 #firstdiv {
-  
   height: 100%;
   background-repeat: no-repeat; 
 }
@@ -492,9 +491,9 @@ header {
   height:18px;
 }
 footer{
+  background: rgb(240, 230, 230);
   width:100%;
   height:80px;
-  background: rgb(240, 230, 230);
 }
 footer span {
   display: block;

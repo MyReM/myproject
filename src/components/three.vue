@@ -44,7 +44,7 @@
     <div id="first-content">
       <div style="height:295px;">
         <div class="body-div">
-          <img src="/static/images/cj1.jpg"/>
+          <img src="/static/images/cj1.jpg" @click="isShowImg=true,showImg='/static/images/cj1.jpg'"/>
           <div class="first-pointers bgwh onept"></div>
         </div>
         <div class="body-div">
@@ -62,11 +62,11 @@
           <div class="first-pointers onew"></div>
         </div>
         <div class="body-div">
-          <img src="/static/images/cj3.jpg"/>
+          <img src="/static/images/cj3.jpg" @click="isShowImg=true,showImg='/static/images/cj3.jpg'"/>
           <div class="first-pointers bgwh lastpt"></div>
         </div>
         <div class="body-div">
-          <img src="/static/images/cj6.jpg"/>
+          <img src="/static/images/cj6.jpg" @click="isShowImg=true,showImg='/static/images/cj6.jpg'"/>
           <div class="first-pointers bgwh first-th-a hidden"></div>
         </div>
         <div class="body-div three-screen">
@@ -91,12 +91,12 @@
         </div>
 
         <div class="body-div second-twpt">
-          <img src="/static/images/cj15.jpg"/>
+          <img src="/static/images/cj15.jpg" @click="isShowImg=true,showImg='/static/images/cj15.jpg'"/>
           <div class="first-pointers bgwh hidden second-th-b"></div>
         </div>
 
         <div class="body-div second-as">
-          <img src="/static/images/cj9.jpg"/>
+          <img src="/static/images/cj9.jpg" @click="isShowImg=true,showImg='/static/images/cj9.jpg'"/>
           <div class="first-pointers bgwh onept"></div>
         </div>
 
@@ -118,7 +118,7 @@
         </div>
 
         <div class="body-div second-laspt">
-          <img src="/static/images/cj11.jpg"/>
+          <img src="/static/images/cj11.jpg" @click="isShowImg=true,showImg='/static/images/cj11.jpg'"/>
           <div class="first-pointers bgwh lastpt"></div>
         </div>
 
@@ -127,8 +127,13 @@
     </div>
 
     <footer>
-
+      <span class="sp1">生活就像一场，无止境的流浪，新患旧伤，我却更坚强一路逆风飞翔，我们不脆弱，不沉默，不协妥，不退缩，不慌张，不绝望，不狂妄，不投降</span>
+      <span class="sp2">——邓紫棋</span>
     </footer>  
+    <div id="showImg" v-show="isShowImg">
+      <span id="showImg-after" @click="isShowImg=false">X</span>
+      <img :src="showImg"/>      
+    </div>
   </div>
 </template>
 
@@ -137,7 +142,9 @@
     name: "first",
     data() {
       return {
-        a: ['盒子精','无敌战神','躺鸡萌妹','带妹上分','带兄弟上分','落地成盒','医疗兵','最佳第五人','暴走鸡神','迷你鸡王','车王']
+        a: ['盒子精','无敌战神','躺鸡萌妹','带妹上分','带兄弟上分','落地成盒','医疗兵','最佳第五人','暴走鸡神','迷你鸡王','车王'],
+        showImg: '',
+        isShowImg: false
       }
     },
     created() {
@@ -146,6 +153,35 @@
 </script>
 
 <style>
+#showImg{
+  position:fixed;
+  width:860px;
+  height:500px;
+  z-index:1000;
+  margin:auto;
+  right:0;
+  left:0;
+  top:0;
+  bottom:0;
+}
+#showImg-after {
+  color: #CCC;
+  font-size: 26px;
+  display: inline-block;
+  position: relative;
+  border-radius: 15px;
+  width:30px;
+  height:30px;
+  cursor: pointer;
+  background: rgb(236, 229, 229);
+  right:-415px;
+  top:29px;
+}
+#showImg img {
+  width:100%;
+  height:100%;
+  border-radius: 12px;
+}
 a {
   text-decoration: none;
 }
@@ -153,7 +189,6 @@ body {
   overflow-x: hidden !important;
 }
 #firstdiv {
-  
   height: 100%;
   background-repeat: no-repeat; 
 }
@@ -370,6 +405,9 @@ header {
   width:100%;
   height:100%;
 }
+#first-content img:hover {
+  cursor: pointer;
+}
 /* 小模块样式 */
 #first-content .body-div{
   margin-left:4px;
@@ -453,9 +491,20 @@ header {
   height:18px;
 }
 footer{
+  background: rgb(240, 230, 230);
   width:100%;
-  height:200px;
-  background: #ccc;
+  height:80px;
+}
+footer span {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  width: 80%;
+  padding: 0 0 0 10%;
+  color: #3e0f44;
+}
+footer .sp2 {
+  text-align: right;
 }
 @media screen and (min-width: 1530px) and (max-width: 1640px){
   .first-small-sweet,.first-small-place,.first-small-flower,.first-small-message {
