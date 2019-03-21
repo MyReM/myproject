@@ -6,39 +6,41 @@
       </div> 
     </header>
     <br/>
-    <span style="display:inline-block;border-top:1px solid;width:46%;height:.5em;color:#ccc;"></span>
+    <span style="display:inline-block;border-top:1px solid;width:46%;height:.5em;color:#ccc;" class="spLine"></span>
     <span style="display:inline-block;width:6%;height:.5em;"></span>
-    <span style="display:inline-block;border-top:1px solid;width:46%;height:.5em;color:#ccc;"></span>
+    <span style="display:inline-block;border-top:1px solid;width:46%;height:.5em;color:#ccc;" class="spLine"></span>
     <br/>
     <br/>
     <div id="first-container">
       <div id="first-menu">
-        <router-link :to="'/three'">
+        <router-link :to="'/four'">
           <div class="first-small-place">
-            <h2>吃鸡小天地</h2>
+            <h2>会说话的盒子</h2>
           </div>
         </router-link>
-        <router-link :to="'/second'">
+        <router-link :to="'/three'">
           <div class="first-small-flower">
-            <h2>我们的回忆</h2>
+            <h2>盒子收集</h2>
           </div>
         </router-link>
-        <router-link :to="'/second'">
+        <router-link :to="'/five'">
           <div class="first-small-sweet">
             <h2>留言板</h2>
           </div>
         </router-link>
         <router-link :to="'/second'">
           <div class="first-small-message">
-            <h2>信息收集箱</h2>
+            <h2>概率事件</h2>
           </div>
         </router-link>
       </div>
     </div>
     <br/>
-    <span style="display:inline-block;border-top:1px solid;width:45%;height:.5em;color:#ccc;"></span>
-    <span style="display:inline-block;width:8%;height:.5em;"></span>
-    <span style="display:inline-block;border-top:1px solid;width:45%;height:.5em;color:#ccc;"></span>
+    <span style="display:inline-block;border-top:1px solid;width:45%;height:.5em;color:#ccc;" class="spLine"></span>
+    
+    <img src="/static/images/ftc.png" class="logo_img">
+    
+    <span style="display:inline-block;border-top:1px solid;width:45%;height:.5em;color:#ccc;" class="spLine"></span>
     <br/>
     <br/>
     <div id="first-content">
@@ -85,7 +87,7 @@
           <div class="one-msg one-msg-bottom second-onemsg">
             <div class="first-title first-title-left">白云山</div>
             <h3>白云山一日游</h3>
-            <div class="right-ms">再次声明，我没得讲过系我交去白云山的（偷笑）</div>
+            <div class="right-ms">再次声明，我没得讲过系我叫去白云山的（偷笑）</div>
           </div>
           <div class="first-pointers hidden second-th-a"></div>
         </div>
@@ -109,8 +111,8 @@
           
           <div class="bd-secondmsg">
             <div class="first-title first-title-left">我们</div>
-            <h3>四个傻仔爬白云山</h3>
-            <div class="right-ms">虽然有点累，但系都系值得的</div>
+            <h3>登顶白云山</h3>
+            <div class="right-ms">这次相聚后，不知何时才能再相见</div>
           </div>
           <div class="first-pointers onet"></div>
           <div class="first-pointers onew"></div>
@@ -153,6 +155,13 @@
 </script>
 
 <style>
+
+img {
+  object-fit: cover;
+}
+.logo_img {
+  display: none;
+}
 #showImg{
   position:fixed;
   width:860px;
@@ -181,6 +190,7 @@
   width:100%;
   height:100%;
   border-radius: 12px;
+  background-size: 100% auto;
 }
 a {
   text-decoration: none;
@@ -404,6 +414,7 @@ header {
 #first-content img {
   width:100%;
   height:100%;
+  background-size: 100% auto;
 }
 #first-content img:hover {
   cursor: pointer;
@@ -775,7 +786,7 @@ footer .sp2 {
     left:-608px;
   }
 }
-@media screen  and (max-width: 1269px) {
+@media screen and (min-width: 1024px) and (max-width: 1269px) {
   
   @keyframes sparkling {
     0% {
@@ -859,9 +870,9 @@ footer .sp2 {
   }
   /* 图片丶描述容器 */
   #first-content {
-  width:1060px;
-  height:620px;
-  padding:0 20px 0 10px;
+    width:1060px;
+    height:620px;
+    padding:0 20px 0 10px;
   }
  
   /* 小模块样式 */
@@ -941,5 +952,307 @@ footer .sp2 {
     left:-528px;
   }
 }
-
+@media screen and (min-width: 300px)  and (max-width: 560px) {
+  
+  .logo_img {
+    display: inline;
+    position:absolute;
+    top:160px;
+    left:128px;
+    width:120px;
+    height:120px;
+  }
+  #firstdiv header {
+    height:25%;
+  }
+  @keyframes sparkling {
+    0% {
+      font-size: 8px;
+      opacity: 0;
+    }
+    50% {
+      font-size: 12px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 8px;
+      opacity: 0;
+    }
+  }
+  @-moz-keyframes sparkling {
+    0% {
+      font-size: 8px;
+      opacity: 0;
+    }
+    50% {
+      font-size: 12px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 8px;
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes sparkling {
+    0% {
+      font-size: 8px;
+      opacity: 0;
+    }
+    50% {
+      font-size: 12px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 8px;
+      opacity: 0;
+    }
+  }
+  @-o-keyframes sparkling {
+    0% {
+      font-size: 8px;
+      opacity: 0;
+    }
+    50% {
+      font-size: 12px;
+      opacity: 1;
+    }
+    100% {
+      font-size: 8px;
+      opacity: 0;
+    }
+  }
+  #firstdiv #heade_div .con1 {
+    animation: sparkling 4s infinite;
+    top: 5%;
+    left: 15%;
+    color: rgb(245, 48, 120);
+  }
+  #firstdiv #heade_div .con2 {
+    animation: sparkling 6s infinite;
+    top: 18%;
+    left: 5%;
+    color: rgb(160, 247, 242);
+  }
+  #firstdiv #heade_div .con3 {
+    animation: sparkling 5s infinite;
+    top: 10%;
+    left: 33%;
+    color: rgb(252, 193, 215);
+    font-family: serif;
+  }
+  #firstdiv #heade_div .con4 {
+    animation: sparkling 4s infinite;
+    top: 10%;
+    left: 25%;
+    color: rgb(219, 78, 238);
+  }
+  #firstdiv #heade_div .con5 {
+    animation: sparkling 6s infinite;
+    top: 12%;
+    left: 15%;
+    color: rgb(187, 144, 199);
+  }
+  #firstdiv #heade_div .con6 {
+    animation: sparkling 5s infinite;
+    top: 18%;
+    left: 45%;
+    color: rgb(236, 196, 134);
+  }
+  #firstdiv #heade_div .con7 {
+    animation: sparkling 4s infinite;
+    top: 5%;
+    left: 55%;
+    color: rgb(115, 191, 241);
+  }
+  #firstdiv #heade_div .con8 {
+    animation: sparkling 5s infinite;
+    top: 10%;
+    left: 75%;
+    color: rgb(214, 122, 241);
+  }
+  #firstdiv #heade_div .con9 {
+    animation: sparkling 6s infinite;
+    top: 10%;
+    left: 60%;
+    color: rgb(211, 250, 148);
+  }
+  #firstdiv #heade_div .con10 {
+    animation: sparkling 4s infinite;
+    top: 10%;
+    left: 85%;
+    color: rgb(44, 253, 149);
+  }
+  #firstdiv #heade_div .con0 {
+    animation: sparkling 5s infinite;
+    top: 10%;
+    left: 70%;
+    color: rgb(245, 167, 241);
+  }
+  #firstdiv #first-container {
+    height:260px;
+    overflow: hidden;
+  }
+  #firstdiv .spLine {
+    width:40% !important; 
+  }
+  #firstdiv .first-small-sweet,#firstdiv .first-small-place,#firstdiv .first-small-flower,#firstdiv .first-small-message {
+    width:40%;
+    margin: 0 10px 20px 10px;
+    height: 130px;
+    line-height: 100px;
+    background-size: cover;
+    font-size: 12px !important;
+    font-family: "SimSun";
+    border-radius: 5px;
+  }
+  #firstdiv .onet{
+    top:-430px;
+    left:187px;
+    z-index:9;
+  }
+  #firstdiv .onew{
+    top:-21px !important;
+    right:-180px;
+    z-index:9;
+  }
+  #firstdiv .onept {
+    top:-13px;
+    left:185px;
+  }
+  #firstdiv .lastpt {
+    top:-434px;
+    left:178px;
+  }
+  /* 图片丶描述容器 */
+ #firstdiv  #first-content {
+  width:96%;
+  height:3870px;
+  padding:0;
+  margin: 0 auto;
+  }
+ 
+  /* 小模块样式 */
+  #firstdiv  #first-content .body-div{
+    width:98%;
+    height:420px;
+    margin-top: 5px;
+    clear: both;
+    display: block;
+  }
+ 
+  /* 两个描述内容小模块样式 */
+  #firstdiv .bd-firstmsg{
+    position:relative;
+    background:#F4F4F4F4;
+    width:94.5%;
+    height:190px;
+    z-index:999;
+    text-align:left;
+  }
+  #firstdiv .bd-secondmsg{
+    position:relative;
+    z-index:100;
+    background:#F4F4F4F4;
+    width:100%;
+    height:50%;
+    text-align:right;
+  }
+  
+  #firstdiv .first-title-left {
+    left:210px;
+  }
+  /* 第一排最后一个描述样式 */
+  .three-screen {
+    float: none;
+    clear: both;
+    height:210px !important;
+    position:relative;
+    top:0;
+    left:0;
+  }
+  .three-screen-div {
+    height:100% !important; 
+    background-color:#F4F4F4F4;
+  }
+  .hidden {
+    display: none !important;
+  }
+  .second-onemsg{
+    position:relative;
+    top:15px;
+    height:100%;
+  }
+  .second-onept {
+    position:relative;
+    left:0;
+    margin-bottom: 32px;
+    height:210px !important;
+  }
+  .second-twpt {
+    position:relative;
+    left:0;
+  }
+  .second-laspt {
+    position:relative;
+    top:0;
+    left:0;
+  }
+  .second-lasmsg {
+    position:relative;
+    left:0;
+    top:0;
+  }
+  .second-as {
+    position:relative;
+    left:0;
+  }
+  footer{
+    background: rgb(240, 230, 230);
+    width:100%;
+    height:160px;
+    margin: 0 auto;
+  }
+  footer span {
+    display: block;
+    height: 120px;
+    line-height: 40px;
+    width: 98%;
+    padding: 0;
+    text-align: center;
+    color: #3e0f44;
+  }
+  footer .sp2 {
+    height: 40px;
+    text-align: right;
+  }
+  #showImg{
+    position:fixed;
+    width:94%;
+    height:520px;
+    z-index:1000;
+    margin:auto;
+    right:0;
+    left:0;
+    top:-180px;
+    bottom:0;
+  }
+  #showImg-after {
+    color: rgb(190, 143, 143);
+    font-size: 26px;
+    display: inline-block;
+    position: relative;
+    border-radius: 15px;
+    width:30px;
+    height:30px;
+    cursor: pointer;
+    background: rgb(236, 229, 229);
+    right:-162px;
+    top:29px;
+  }
+  #showImg img {
+    width:100%;
+    height:100%;
+    border-radius: 12px;
+  }
+}
 </style>

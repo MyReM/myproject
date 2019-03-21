@@ -1,945 +1,173 @@
 <template>
-  <div id="firstdiv">
-    <header>
-      <div id="heade_div">
-        <div v-for="(val,index) in a" :key="val + index" :class="`con`+index">{{a[Math.round(Math.random()*10)]}}</div>
-      </div> 
-    </header>
-    <br/>
-    <span style="display:inline-block;border-top:1px solid;width:46%;height:.5em;color:#ccc;"></span>
-    <span style="display:inline-block;width:6%;height:.5em;"></span>
-    <span style="display:inline-block;border-top:1px solid;width:46%;height:.5em;color:#ccc;"></span>
-    <br/>
-    <br/>
-    <div id="first-container">
-      <div id="first-menu">
-        <router-link :to="'/three'">
-          <div class="first-small-place">
-            <h2>吃鸡小天地</h2>
-          </div>
-        </router-link>
-        <router-link :to="'/second'">
-          <div class="first-small-flower">
-            <h2>我们的回忆</h2>
-          </div>
-        </router-link>
-        <router-link :to="'/second'">
-          <div class="first-small-sweet">
-            <h2>留言板</h2>
-          </div>
-        </router-link>
-        <router-link :to="'/second'">
-          <div class="first-small-message">
-            <h2>信息收集箱</h2>
-          </div>
-        </router-link>
-      </div>
+  <div id="three">
+		<header>
+			<div class="header_menu">
+				<ul>
+					<li>
+						<img src="/static/images/ftc.png"/>
+					</li>
+					<li><router-link to= "/">首页</router-link></li>
+					<li><router-link to= "/four">盒子我们</router-link></li>
+					<li><router-link to= "/five">留言板</router-link></li>
+					<li><router-link to= "/second">概率事件</router-link></li>
+				</ul>
+			</div>
+      <div></div>
+		</header>
+    <div id="form">
+      <el-form :model="chickenMsg" :inline="true">
+        <el-form-item>
+          <el-upload
+            class="avatar-uploader"
+            ref="uploadImage"
+            action="https://jsonplaceholder.typicode.com/posts/"
+            :show-file-list="false"
+            :on-change="changeImage"
+            :on-success="uploadSuccess" 
+            :auto-upload="false"
+            name="image">
+            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
+        </el-form-item>
+        <el-form-item>
+          <el-input
+            style="width:98%;"
+            type="textarea"
+            :autosize="{ minRows: 13, maxRows: 13}"
+            placeholder="请输入内容"
+            v-model="chickenMsg.msg">
+          </el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="success" @click="submitMsg">成功按钮</el-button>
+        </el-form-item>
+      </el-form>  
     </div>
-    <br/>
-    <span style="display:inline-block;border-top:1px solid;width:45%;height:.5em;color:#ccc;"></span>
-    <span style="display:inline-block;width:8%;height:.5em;"></span>
-    <span style="display:inline-block;border-top:1px solid;width:45%;height:.5em;color:#ccc;"></span>
-    <br/>
-    <br/>
-    <div id="first-content">
-      <div style="height:295px;">
-        <div class="body-div">
-          <img src="/static/images/cj1.jpg" @click="isShowImg=true,showImg='/static/images/cj1.jpg'"/>
-          <div class="first-pointers bgwh onept"></div>
-        </div>
-        <div class="body-div">
-          <div class="bd-firstmsg">
-            <div class="first-title">锦哥开车</div>
-            <h3>准备撞草堆</h3>
-            <div>锦哥自认车神，瞬间打脸</div>
-          </div>
-          <div class="bd-secondmsg">
-            <div class="first-title first-title-left">秒变渣渣</div>
-            <h3>帅不过两秒系列</h3>
-            <div class="right-ms">话都未讲完就撞左上去</div>
-          </div>
-          <div class="first-pointers onet"></div>
-          <div class="first-pointers onew"></div>
-        </div>
-        <div class="body-div">
-          <img src="/static/images/cj3.jpg" @click="isShowImg=true,showImg='/static/images/cj3.jpg'"/>
-          <div class="first-pointers bgwh lastpt"></div>
-        </div>
-        <div class="body-div">
-          <img src="/static/images/cj6.jpg" @click="isShowImg=true,showImg='/static/images/cj6.jpg'"/>
-          <div class="first-pointers bgwh first-th-a hidden"></div>
-        </div>
-        <div class="body-div three-screen">
-          <div class="one-msg one-msg-top three-screen-div">
-            <div class="first-title">表示辣鸡</div>
-            <h3>贵哥表示无奈</h3>
-            <div>贵哥话车技流就唔好开车啦</div>
-          </div>
-          <div hidden class="first-pointers first-th-b hidden"></div>
-        </div>
-      </div>
-
-      <div>
-
-        <div class="body-div second-onept">
-          <div class="one-msg one-msg-bottom second-onemsg">
-            <div class="first-title first-title-left">白云山</div>
-            <h3>白云山一日游</h3>
-            <div class="right-ms">再次声明，我没得讲过系我交去白云山的（偷笑）</div>
-          </div>
-          <div class="first-pointers hidden second-th-a"></div>
-        </div>
-
-        <div class="body-div second-twpt">
-          <img src="/static/images/cj15.jpg" @click="isShowImg=true,showImg='/static/images/cj15.jpg'"/>
-          <div class="first-pointers bgwh hidden second-th-b"></div>
-        </div>
-
-        <div class="body-div second-as">
-          <img src="/static/images/cj9.jpg" @click="isShowImg=true,showImg='/static/images/cj9.jpg'"/>
-          <div class="first-pointers bgwh onept"></div>
-        </div>
-
-        <div class="body-div second-lasmsg">
-          <div class="bd-firstmsg">
-            <div class="first-title">傲娇锦哥</div>
-            <h3>想打佢</h3>
-            <div>锦哥傲娇的小眼神表示白云山小意思啦</div>
-          </div>
-          
-          <div class="bd-secondmsg">
-            <div class="first-title first-title-left">我们</div>
-            <h3>四个傻仔爬白云山</h3>
-            <div class="right-ms">虽然有点累，但系都系值得的</div>
-          </div>
-          <div class="first-pointers onet"></div>
-          <div class="first-pointers onew"></div>
-
-        </div>
-
-        <div class="body-div second-laspt">
-          <img src="/static/images/cj11.jpg" @click="isShowImg=true,showImg='/static/images/cj11.jpg'"/>
-          <div class="first-pointers bgwh lastpt"></div>
-        </div>
-
-      </div>
-      
-    </div>
-
-    <footer>
-      <span class="sp1">生活就像一场，无止境的流浪，新患旧伤，我却更坚强一路逆风飞翔，我们不脆弱，不沉默，不协妥，不退缩，不慌张，不绝望，不狂妄，不投降</span>
-      <span class="sp2">——邓紫棋</span>
-    </footer>  
-    <div id="showImg" v-show="isShowImg">
-      <span id="showImg-after" @click="isShowImg=false">X</span>
-      <img :src="showImg"/>      
-    </div>
-  </div>
+  </div>    
 </template>
-
 <script>
-  export default {
-    name: "first",
-    data() {
-      return {
-        a: ['盒子精','无敌战神','躺鸡萌妹','带妹上分','带兄弟上分','落地成盒','医疗兵','最佳第五人','暴走鸡神','迷你鸡王','车王'],
-        showImg: '',
-        isShowImg: false
+export default {
+	name: 'four',
+	data() {
+		return {
+      imageUrl: '',
+      chickenMsg: {
+        image: '',
+        msg: '',
+        time: ''
       }
+		}
+  },
+  methods: {
+    changeImage(file, fileList) {
+      this.imageUrl = URL.createObjectURL(file.raw);
+      console.log('this.imageUrl:' + this.imageUrl)
     },
-    created() {
+    uploadSuccess() {
+      this.$refs.uploadImgs.clearFiles()
+    },
+    submitUpload() {
+      this.$refs.uploadImage.submit()
+    },
+    submitMsg() {
+      console.log('this.chickenMsg.msg:'+this.chickenMsg.msg)
     }
   }
+}
 </script>
-
 <style>
-#showImg{
-  position:fixed;
-  width:860px;
-  height:500px;
-  z-index:1000;
-  margin:auto;
-  right:0;
-  left:0;
-  top:0;
-  bottom:0;
-}
-#showImg-after {
-  color: #CCC;
-  font-size: 26px;
-  display: inline-block;
+@charset "UTF-8";
+#three header {
+	overflow-x: hidden;
   position: relative;
-  border-radius: 15px;
-  width:30px;
-  height:30px;
-  cursor: pointer;
-  background: rgb(236, 229, 229);
-  right:-415px;
-  top:29px;
-}
-#showImg img {
-  width:100%;
-  height:100%;
-  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+	margin: 0 auto;
+  background: rgb(179, 177, 192);
 }
 a {
-  text-decoration: none;
+	text-decoration: none;
+	color: #18314F;
 }
-body {
-  overflow-x: hidden !important;
+#three ul {
+	margin: 0;
+	padding: 0;
 }
-#firstdiv {
-  height: 100%;
-  background-repeat: no-repeat; 
+#three li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
-header {
-  width: 100%;
-  height: 70%;
-  
-  background-image: url("/static/images/cj2.jpg");
-  background-repeat: no-repeat; 
-  background-size: 100%;
+#three header ul li {
+	width: 20%;
+	float: left;
+	line-height: 60px;
 }
-#heade_div div {
-  color: rebeccapurple;
-  display: inline-block;
-  font-size: 20px;
-  position: absolute;
-  cursor: pointer;
+#three header ul li:first-child {
+	text-align: left;
 }
-@keyframes sparkling {
-  0% {
-    font-size: 12px;
-    opacity: 0;
-  }
-  50% {
-    font-size: 24px;
-    opacity: 1;
-  }
-  100% {
-    font-size: 12px;
-    opacity: 0;
-  }
+#three header ul li img {
+	height:60px;
 }
-@-webkit-keyframes sparkling {
-  0% {
-    font-size: 12px;
-    opacity: 0;
-  }
-  50% {
-    font-size: 24px;
-    opacity: 1;
-  }
-  100% {
-    font-size: 12px;
-    opacity: 0;
-  }
+#three header div {
+	width: 100%;
+	height:60px;
 }
-@-moz-keyframes sparkling {
-  0% {
-    font-size: 12px;
-    opacity: 0;
-  }
-  50% {
-    font-size: 24px;
-    opacity: 1;
-  }
-  100% {
-    font-size: 12px;
-    opacity: 0;
-  }
+#three header .header_menu {
+	position: fixed;
+	z-index: 9;
+  background: rgb(249, 249, 253);
 }
-@-o-keyframes sparkling {
-  0% {
-    font-size: 12px;
-    opacity: 0;
-  }
-  50% {
-    font-size: 24px;
-    opacity: 1;
-  }
-  100% {
-    font-size: 12px;
-    opacity: 0;
-  }
+.el-form {
+  width: 600px;
+  margin: 20px auto;
 }
-#heade_div .con1 {
-  animation: sparkling 4s infinite;
-  top: 5%;
-  left: 15%;
-  color: rgb(245, 48, 120);
-}
-#heade_div .con2 {
-  animation: sparkling 6s infinite;
-  top: 18%;
-  left: 5%;
-  color: rgb(160, 247, 242);
-}
-#heade_div .con3 {
-  animation: sparkling 5s infinite;
-  top: 36%;
-  left: 33%;
-  color: rgb(252, 193, 215);
-  font-family: serif;
-}
-#heade_div .con4 {
-  animation: sparkling 4s infinite;
-  top: 10%;
-  left: 25%;
-  color: rgb(219, 78, 238);
-}
-#heade_div .con5 {
-  animation: sparkling 6s infinite;
-  top: 40%;
-  left: 15%;
-  color: rgb(187, 144, 199);
-}
-#heade_div .con6 {
-  animation: sparkling 5s infinite;
-  top: 30%;
-  left: 25%;
-  color: rgb(236, 196, 134);
-}
-#heade_div .con7 {
-  animation: sparkling 4s infinite;
-  top: 5%;
-  left: 65%;
-  color: rgb(115, 191, 241);
-}
-#heade_div .con8 {
-  animation: sparkling 5s infinite;
-  top: 40%;
-  left: 75%;
-  color: rgb(214, 122, 241);
-}
-#heade_div .con9 {
-  animation: sparkling 6s infinite;
-  top: 10%;
-  left: 60%;
-  color: rgb(211, 250, 148);
-}
-#heade_div .con10 {
-  animation: sparkling 4s infinite;
-  top: 10%;
-  left: 85%;
-  color: rgb(44, 253, 149);
-}
-#heade_div .con0 {
-  animation: sparkling 5s infinite;
-  top: 20%;
-  left: 70%;
-  color: rgb(245, 167, 241);
-}
-#first-menu {
-  width:100%;
-  margin:0 auto;
-}
-#first-container {
-  width: 100%;
-  margin: 0 auto;
-}
-/* VVV颈部四个导航菜单样式VVV */
-.first-th-a {
-  top:-220px;
-  left:282px;
-}
-.first-th-b {
-  top:-218px;
-  left:-7px;
-  z-index:9;
-}
-.second-th-a {
-  top:-90px;
-  left:283px;
-  z-index:9;
-}
-.second-th-b {
-  top:-92px;
-  right:10px;
-}
-.first-small-message {
-  background-image: url("/static/images/msg.jpg");
-}
-.first-small-flower {
-  background-image: url("/static/images/flower.jpg");
-}
-.first-small-place {
-  background-image: url("/static/images/place.jpg");
-}
-.first-small-sweet {
-  background-image: url("/static/images/sweet.jpg");
-}
-.first-small-sweet,.first-small-place,.first-small-flower,.first-small-message {
-  background-repeat: no-repeat; 
-  background-size: 100%;
-  color: white;
-  display: inline-block;
-  margin:0 20px 0 20px;
-  width:360px;
-  height: 180px;
-  line-height: 150px;
-}
-/* ^^^颈部四个导航菜单样式 ^^^*/
-/* 描述信息指向小三角 */
-.first-pointers {
-  position:relative;
-  width:14px;
-  height:14px;
-  background-color:#F4F4F4F4;
-  transform:rotate(45deg);
-  -ms-transform:rotate(45deg); 	/* IE 9 */
-  -moz-transform:rotate(45deg); 	/* Firefox */
-  -webkit-transform:rotate(45deg); /* Safari 和 Chrome */
-  -o-transform:rotate(45deg); 	/* Opera */
-}
-/* 图片丶描述容器 */
-#first-content {
-  margin:0 auto;
-  width:1470px;
-  height:600px;
-  padding:0 20px 0 20px;
-  overflow:hidden;
-}
-/* 图片格式 */
-#first-content img {
-  width:100%;
-  height:100%;
-}
-#first-content img:hover {
-  cursor: pointer;
-}
-/* 小模块样式 */
-#first-content .body-div{
-  margin-left:4px;
-  width:290px;
-  height:290px;
-  float:left;
-}
-.body-div h3{
-  margin:5px 20px 5px 0;
-}
-/* 两个描述内容小模块样式 */
-.bd-firstmsg{
-  padding:15px 0 0 20px;
-  position:relative;
-  background:#F4F4F4F4;
-  width:270px;height:133px;
-  margin-bottom:4px;z-index:999;
-  text-align:left;
-}
-.onept {
-  top:-232px;
-  left:281px;
-}
-.lastpt{
-  top:-87px;
-  left:-9px;
-}
-.onet{
-  top:-226px;
-  left:-7px;
-  z-index:9;
-}
-.onew{
-  top:-95px;
-  right:-283px;
-  z-index:9;
-}
-.one-msg {
-  position:relative;
-  background:#F4F4F4F4;
-  height:275px;
-  margin-bottom:4px;
-  z-index:999;
-}
-.one-msg-top{
-  text-align: left;
-  padding:15px 0 0 20px;
-}
-
-.one-msg-bottom{
-  text-align: right;
-  padding:15px 0 0 0;
-}
-.right-ms {
-  margin:0 20px 0 0;
-}
-.bd-secondmsg{
-  position:relative;
-  z-index:100;
-  background:#F4F4F4F4;
-  width:100%;
-  height:138px;
-  text-align:right;
-}
-.first-title {
-  width:120px;
-  height:40px;
-  border-bottom:1px solid #ccc;
-  color:#ccc;
-  font-size:30px;
-  font-family:STFangsong;
-}
-.first-title-left {
-  position:relative;
-  left:150px;
-  top:5px;
-}
-.bgwh {
-  background-color:white;
-  width:18px;
-  height:18px;
-}
-footer{
-  background: rgb(240, 230, 230);
-  width:100%;
-  height:80px;
-}
-footer span {
-  display: block;
-  height: 40px;
-  line-height: 40px;
-  width: 80%;
-  padding: 0 0 0 10%;
-  color: #3e0f44;
-}
-footer .sp2 {
-  text-align: right;
-}
-@media screen and (min-width: 1530px) and (max-width: 1640px){
-  .first-small-sweet,.first-small-place,.first-small-flower,.first-small-message {
-    width:320px;
-  }
-}
-@media screen and (min-width: 1460px) and (max-width: 1529px) {
-  .first-small-sweet,.first-small-place,.first-small-flower,.first-small-message {
-    width:320px;
-    margin: 0 10px 0 10px;
-  }
-  .onet{
-    top:-320px;
-    left:-7px;
-    z-index:9;
-  }
-  .onew{
-    top:-95px !important;
-    right:-333px;
-    z-index:9;
-  }
-  .onept {
-    top:-327px;
-    left:330px;
-  }
-  /* 图片丶描述容器 */
-  #first-content {
-  width:1400px;
-  height:800px;
-  padding:0 20px 0 20px;
-  }
- 
-  /* 小模块样式 */
-  #first-content .body-div{
-    margin-left:4px;
-    width:340px;
-    height:380px;
-    margin-top: 5px;
-  }
- 
-  /* 两个描述内容小模块样式 */
-  .bd-firstmsg{
-    position:relative;
-    background:#F4F4F4F4;
-    width:320px;
-    height:173px;
-    margin-bottom:4px;
-    z-index:999;
-    text-align:left;
-  }
-  .bd-secondmsg{
-    position:relative;
-    z-index:100;
-    background:#F4F4F4F4;
-    width:100%;
-    height:188px;
-    text-align:right;
-  }
-  
-  .first-title-left {
-    left:200px;
-  }
-  /* 第一排最后一个描述样式 */
-  .three-screen {
-    float: none;
-    clear: both;
-    height:150px !important;
-    position:relative;
-    top:-170px;
-    left:1032px;
-    color:#c0c0c0;
-  }
-  .three-screen-div {
-    height:100% !important; 
-    background-color:rgba(0,0,0,.4);
-  }
-  .hidden {
-    display: none !important;
-  }
-  .second-onemsg{
-    background: rgba(0, 0, 0, .4);
-    color: #c0c0c0;
-    position:relative;
-    top:215px;
-    height:150px;
-    
-  }
-  .second-onept {
-    position:relative;
-    left:-344px;
-  }
-  .second-twpt {
-    position:relative;
-    left:-688px;
-  }
-  .second-laspt {
-    position:relative;
-    top:-385px;
-    left:689px;
-  }
-  .second-lasmsg {
-    position:relative;
-    left:688px;
-    top:-385px;
-  }
-  .second-as {
-    position:relative;
-    left:-688px;
-  }
-}
-@media screen and (min-width: 1270px) and (max-width: 1459px) {
-  
-  @keyframes sparkling {
-    0% {
-      font-size: 12px;
-      opacity: 0;
-    }
-    50% {
-      font-size: 22px;
-      opacity: 1;
-    }
-    100% {
-      font-size: 12px;
-      opacity: 0;
-    }
-  }
-  @-moz-keyframes sparkling {
-    0% {
-      font-size: 12px;
-      opacity: 0;
-    }
-    50% {
-      font-size: 22px;
-      opacity: 1;
-    }
-    100% {
-      font-size: 12px;
-      opacity: 0;
-    }
-  }
-  @-webkit-keyframes sparkling {
-    0% {
-      font-size: 12px;
-      opacity: 0;
-    }
-    50% {
-      font-size: 22px;
-      opacity: 1;
-    }
-    100% {
-      font-size: 12px;
-      opacity: 0;
-    }
-  }
-  @-o-keyframes sparkling {
-    0% {
-      font-size: 12px;
-      opacity: 0;
-    }
-    50% {
-      font-size: 22px;
-      opacity: 1;
-    }
-    100% {
-      font-size: 12px;
-      opacity: 0;
-    }
-  }
-  .first-small-sweet,.first-small-place,.first-small-flower,.first-small-message {
-    width:280px;
-    margin: 0 10px 0 10px;
-  }
-  .onet{
-    top:-230px;
-    left:-7px;
-    z-index:9;
-  }
-  .onew{
-    top:-95px !important;
-    right:-293px;
-    z-index:9;
-  }
-  .onept {
-    top:-236px;
-    left:290px;
-  }
-  /* 图片丶描述容器 */
-  #first-content {
-  width:1280px;
-  height:620px;
-  padding:0 20px 0 80px;
-  }
- 
-  /* 小模块样式 */
-  #first-content .body-div{
-    margin-left:4px;
-    width:300px;
-    height:300px;
-    margin-top: 5px;
-  }
- 
-  /* 两个描述内容小模块样式 */
-  .bd-firstmsg{
-    position:relative;
-    background:#F4F4F4F4;
-    width:280px;
-    height:133px;
-    margin-bottom:4px;
-    z-index:999;
-    text-align:left;
-  }
-  .bd-secondmsg{
-    position:relative;
-    z-index:100;
-    background:#F4F4F4F4;
-    width:100%;
-    height:148px;
-    text-align:right;
-  }
-  
-  .first-title-left {
-    left:160px;
-  }
-  /* 第一排最后一个描述样式 */
-  .three-screen {
-    float: none;
-    clear: both;
-    height:115px !important;
-    position:relative;
-    top:-135px;
-    left:912px;
-    color:#c0c0c0;
-  }
-  .three-screen-div {
-    height:100% !important; 
-    background-color:rgba(0,0,0,.4);
-  }
-  .hidden {
-    display: none !important;
-  }
-  .second-onemsg{
-    background: rgba(0, 0, 0, .4);
-    color: #c0c0c0;
-    position:relative;
-    top:170px;
-    height:115px;
-  }
-  .second-onept {
-    position:relative;
-    left:-304px;
-  }
-  .second-twpt {
-    position:relative;
-    left:-608px;
-  }
-  .second-laspt {
-    position:relative;
-    top:-305px;
-    left:609px;
-  }
-  .second-lasmsg {
-    position:relative;
-    left:608px;
-    top:-305px;
-  }
-  .second-as {
-    position:relative;
-    left:-608px;
-  }
-}
-@media screen  and (max-width: 1269px) {
-  
-  @keyframes sparkling {
-    0% {
-      font-size: 12px;
-      opacity: 0;
-    }
-    50% {
-      font-size: 16px;
-      opacity: 1;
-    }
-    100% {
-      font-size: 12px;
-      opacity: 0;
-    }
-  }
-  @-moz-keyframes sparkling {
-    0% {
-      font-size: 12px;
-      opacity: 0;
-    }
-    50% {
-      font-size: 16px;
-      opacity: 1;
-    }
-    100% {
-      font-size: 12px;
-      opacity: 0;
-    }
-  }
-  @-webkit-keyframes sparkling {
-    0% {
-      font-size: 12px;
-      opacity: 0;
-    }
-    50% {
-      font-size: 16px;
-      opacity: 1;
-    }
-    100% {
-      font-size: 12px;
-      opacity: 0;
-    }
-  }
-  @-o-keyframes sparkling {
-    0% {
-      font-size: 12px;
-      opacity: 0;
-    }
-    50% {
-      font-size: 16px;
-      opacity: 1;
-    }
-    100% {
-      font-size: 12px;
-      opacity: 0;
-    }
-  }
-  #first-container {
-    height:130px;
+.avatar-uploader .el-upload {
+    width: 320px;
+    height: 280px;
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
     overflow: hidden;
-  }
-  .first-small-sweet,.first-small-place,.first-small-flower,.first-small-message {
-    width:20%;
-    height: 130px;
-    line-height: 100px;
-    background-size: cover;
-  }
-  .onet{
-    top:-230px;
-    left:-7px;
-    z-index:9;
-  }
-  .onew{
-    top:-95px !important;
-    right:-253px;
-    z-index:9;
-  }
-  .onept {
-    top:-236px;
-    left:250px;
-  }
-  /* 图片丶描述容器 */
-  #first-content {
-  width:1060px;
-  height:620px;
-  padding:0 20px 0 10px;
-  }
- 
-  /* 小模块样式 */
-  #first-content .body-div{
-    margin-left:4px;
-    width:260px;
-    height:300px;
-    margin-top: 5px;
-  }
- 
-  /* 两个描述内容小模块样式 */
-  .bd-firstmsg{
-    position:relative;
-    background:#F4F4F4F4;
-    width:240px;
-    height:133px;
-    margin-bottom:4px;
-    z-index:999;
-    text-align:left;
-  }
-  .bd-secondmsg{
-    position:relative;
-    z-index:100;
-    background:#F4F4F4F4;
-    width:100%;
-    height:148px;
-    text-align:right;
-  }
-  
-  .first-title-left {
-    left:120px;
-  }
-  /* 第一排最后一个描述样式 */
-  .three-screen {
-    float: none;
-    clear: both;
-    height:115px !important;
-    position:relative;
-    top:-135px;
-    left:792px;
-    color:#c0c0c0;
-  }
-  .three-screen-div {
-    height:100% !important; 
-    background-color:rgba(0,0,0,.4);
-  }
-  .hidden {
-    display: none !important;
-  }
-  .second-onemsg{
-    background: rgba(0, 0, 0, .4);
-    color: #c0c0c0;
-    position:relative;
-    top:170px;
-    height:115px;
-  }
-  .second-onept {
-    position:relative;
-    left:-264px;
-  }
-  .second-twpt {
-    position:relative;
-    left:-528px;
-  }
-  .second-laspt {
-    position:relative;
-    top:-305px;
-    left:529px;
-  }
-  .second-lasmsg {
-    position:relative;
-    left:528px;
-    top:-305px;
-  }
-  .second-as {
-    position:relative;
-    left:-528px;
-  }
 }
-
+.avatar-uploader .el-upload:hover {
+  border-color: #409EFF;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 290px;
+  height: 260px;
+  line-height: 260px;
+  text-align: center;
+}
+.avatar {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+@media only screen and (min-width: 300px) and (max-width: 460px) {
+  .avatar-uploader .el-upload {
+    width: 96%;
+    height: 420px;
+  }
+  .el-form {
+    width: 96%;
+    margin:auto;
+  }
+  .el-form-item,.el-form-item__content {
+    width:100%;
+  }
+  #three #form {
+    margin: 20px 0 0 0;
+  }
+  #three header ul li {
+		font-size: 14px;
+	}
+}
 </style>
+
+

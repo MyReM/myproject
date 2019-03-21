@@ -2,7 +2,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
 import ElementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import echarts from 'echarts'
@@ -11,6 +10,7 @@ Vue.use(ElementUi)
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts 
 
+import router from './router'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
